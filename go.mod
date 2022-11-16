@@ -5,8 +5,11 @@ go 1.19
 require (
 	github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20221108110312-4cf137879fb2
 	github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20221108110312-4cf137879fb2
+	github.com/yitsushi/macpot v1.0.2
 	google.golang.org/grpc v1.50.1
 	google.golang.org/protobuf v1.28.1
+	gopkg.in/yaml.v2 v2.2.3
+	k8s.io/utils v0.0.0-20221108210102-8e77b1f39fe2
 )
 
 require (
