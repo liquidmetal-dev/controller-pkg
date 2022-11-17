@@ -9,7 +9,7 @@ import (
 	"fmt"
 
 	flclient "github.com/weaveworks-liquidmetal/controller-pkg/client"
-	microvm "github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
+	"github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
 	flintlockv1 "github.com/weaveworks-liquidmetal/flintlock/api/services/microvm/v1alpha1"
 	flintlocktypes "github.com/weaveworks-liquidmetal/flintlock/api/types"
 	"github.com/weaveworks-liquidmetal/flintlock/client/cloudinit/instance"
@@ -36,9 +36,11 @@ type Scope interface {
 	// GetInstanceID returns the UUID of the microvm.
 	GetInstanceID() string
 	// GetRawBootstrapData returns customised commands/cloud init to be run at microvm boot.
-	GetRawBootstrapData() string
+	GetRawBootstrapData() (string, error)
 	// GetSSHPublicKeys returns the public keys to be added to the microvm.
 	GetSSHPublicKeys() []microvm.SSHPublicKey
+	// GetLabels returns the labels to apply to the microvm.
+	GetLabels() map[string]string
 }
 
 type Service struct {
@@ -114,7 +116,12 @@ func (s *Service) Close() {
 }
 
 func (s *Service) addMetadata(apiMicroVM *flintlocktypes.MicroVMSpec) error {
-	apiMicroVM.Metadata["user-data"] = s.scope.GetRawBootstrapData()
+	bootData, err := s.scope.GetRawBootstrapData()
+	if err != nil {
+		return fmt.Errorf("getting user data for microvm: %w", err)
+	}
+
+	apiMicroVM.Metadata["user-data"] = bootData
 
 	vendorData, err := s.createVendorData()
 	if err != nil {

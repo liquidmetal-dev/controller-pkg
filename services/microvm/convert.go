@@ -16,6 +16,7 @@ func convertToFlintlockAPI(mvmScope Scope) *flintlocktypes.MicroVMSpec {
 	apiVM := &flintlocktypes.MicroVMSpec{
 		Id:         mvmScope.Name(),
 		Namespace:  mvmScope.Namespace(),
+		Labels:     mvmScope.GetLabels(),
 		Vcpu:       int32(mvmSpec.VCPU),
 		MemoryInMb: int32(mvmSpec.MemoryMb),
 		Kernel: &flintlocktypes.Kernel{
