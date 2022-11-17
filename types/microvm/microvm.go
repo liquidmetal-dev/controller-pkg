@@ -16,6 +16,8 @@ limitations under the License.
 
 package microvm
 
+// VMSpec holds the configuration for the MicroVM which will be passed
+// directy to firecracker.
 type VMSpec struct {
 	// VCPU specifies how many vcpu's the microvm will be allocated.
 	// +kubebuilder:validation:Required
@@ -52,6 +54,10 @@ type VMSpec struct {
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:MinItems:=1
 	NetworkInterfaces []NetworkInterface `json:"networkInterfaces"`
+
+	// Labels allow you to include extra data on the Microvm
+	// +optional
+	Labels map[string]string `json:"labels"`
 }
 
 // ContainerFileSource represents a file coming from a container image.
@@ -125,29 +131,10 @@ type Host struct {
 	// Name is an optional name for the host.
 	// +optional
 	Name string `json:"name,omitempty"`
-	// Endpoint is the API endpoint for the microvm service (i.e. flintloc)
+	// Endpoint is the API endpoint for the microvm service (i.e. flintlock)
 	// including the port.
 	// +kubebuilder:validation:Required
 	Endpoint string `json:"endpoint"`
-	// BasicAuthSecret is the name of the secret containing basic auth info for the host
-	// The secret should be created in the same namespace as the MicroVM.
-	//
-	// apiVersion: v1
-	// kind: Secret
-	// metadata:
-	//  name: mybasicauthsecret
-	//  namespace: same-as-microvm
-	// type: Opaque
-	// data:
-	//  token: YWRtaW4=
-	BasicAuthSecret string `json:"basicAuthSecret,omitempty"`
-}
-
-// TLSConfig represents config for connecting to TLS enabled hosts.
-type TLSConfig struct {
-	Cert   []byte `json:"cert"`
-	Key    []byte `json:"key"`
-	CACert []byte `json:"caCert"`
 }
 
 type SSHPublicKey struct {
