@@ -15,7 +15,7 @@ PKG?=$*
 all:
 	$(MAKE) $(targets)
 
-tidy-%: fmt-% vet-%
+tidy-%: generate-% fmt-% vet-%
 	cd $(subst :,/,$*); go mod tidy -compat=1.19
 
 fmt-%:
@@ -40,7 +40,7 @@ generate-%: controller-gen
 CONTROLLER_GEN = $(GOBIN)/controller-gen
 .PHONY: controller-gen
 controller-gen: ## Download controller-gen locally if necessary.
-	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.8.0)
+	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.10.0)
 
 # go-install-tool will 'go install' any package $2 and install it to $1.
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
