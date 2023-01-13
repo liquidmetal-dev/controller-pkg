@@ -75,13 +75,17 @@ type Volume struct {
 	// ID is a unique identifier for this volume.
 	// +kubebuilder:validation:Required
 	ID string `json:"id"`
-	// Image is the container image to use for the volume.
+	// Image is the container image to use as the source for the volume.
 	// +kubebuilder:validation:Required
 	Image string `json:"image"`
 	// ReadOnly specifies that the volume is to be mounted readonly.
 	// +kubebuilder:default:=false
 	// +optional
 	ReadOnly bool `json:"readOnly,omitempty"`
+	// MountPoint specifies the guest mountpoint for the volume.
+	// This will only be applied to additional volumes.
+	// +optional
+	MountPoint string `json:"mountPoint,omitempty"`
 }
 
 // IfaceType is a type representing the network interface types.
