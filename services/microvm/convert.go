@@ -47,13 +47,19 @@ func convertToFlintlockAPI(mvmScope Scope) *flintlocktypes.MicroVMSpec {
 	for i := range mvmSpec.AdditionalVolumes {
 		volume := mvmSpec.AdditionalVolumes[i]
 
-		apiVM.AdditionalVolumes = append(apiVM.AdditionalVolumes, &flintlocktypes.Volume{
+		addVol := &flintlocktypes.Volume{
 			Id:         volume.ID,
 			IsReadOnly: volume.ReadOnly,
 			Source: &flintlocktypes.VolumeSource{
 				ContainerSource: &volume.Image,
 			},
-		})
+		}
+
+		if volume.MountPoint != "" {
+			addVol.MountPoint = &volume.MountPoint
+		}
+
+		apiVM.AdditionalVolumes = append(apiVM.AdditionalVolumes, addVol)
 	}
 
 	apiVM.Interfaces = []*flintlocktypes.NetworkInterface{}
