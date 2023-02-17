@@ -19,6 +19,11 @@ package microvm
 // VMSpec holds the configuration for the MicroVM which will be passed
 // directy to firecracker.
 type VMSpec struct {
+	// Provider allows you to specify the name of the microvm provider to use.
+	// If this isn't supplied then the default provider will be used.
+	// +optional
+	Provider string `json:"provider,omitempty"`
+
 	// VCPU specifies how many vcpu's the microvm will be allocated.
 	// +kubebuilder:validation:Required
 	// +kubebuilder:validation:Minimum:=1
