@@ -3,7 +3,7 @@ module github.com/weaveworks-liquidmetal/controller-pkg/services/microvm
 go 1.19
 
 require (
-	github.com/weaveworks-liquidmetal/controller-pkg/client v0.0.0-20221117135625-e87f6fda7332
+	github.com/weaveworks-liquidmetal/controller-pkg/client v0.0.0-20230116125931-089fb91de682
 	github.com/weaveworks-liquidmetal/controller-pkg/types/microvm v0.0.0-20230113163837-eaa53ce86ced
 	github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230109155544-97f4f12ca184
 	github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230109155544-97f4f12ca184
