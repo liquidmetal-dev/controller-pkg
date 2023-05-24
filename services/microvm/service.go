@@ -24,7 +24,7 @@ const (
 	cloudInitHeader = "#cloud-config\n"
 )
 
-// Scope contains functions for operators to provide microvm request  configuration
+// Scope contains methods for operators to provide microvm request configuration
 // to the service.
 type Scope interface {
 	// Name returns the kubernetes name of the object creating the microvm.

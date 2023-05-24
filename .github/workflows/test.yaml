@@ -1,0 +1,22 @@
+name: Run tests
+
+on:
+  pull_request:
+    paths:
+      - 'services/microvm/**'
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: services/microvm
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.19'
+      - name: Run tests
+        run: go test ./...
