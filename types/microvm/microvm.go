@@ -30,7 +30,7 @@ type VMSpec struct {
 	MemoryMb int64 `json:"memoryMb"`
 
 	// RootVolume specifies the volume to use for the root of the microvm.
-	// +kubebuilder:validation:Required
+	// +optional
 	RootVolume Volume `json:"rootVolume"`
 
 	// AdditionalVolumes specifies additional non-root volumes to attach to the microvm.
@@ -38,7 +38,7 @@ type VMSpec struct {
 	AdditionalVolumes []Volume `json:"volumes,omitempty"`
 
 	// Kernel specifies the kernel and its arguments to use.
-	// +kubebuilder:validation:Required
+	// +optional
 	Kernel ContainerFileSource `json:"kernel"`
 
 	// KernelCmdLine are the additional args to use for the kernel cmdline.
@@ -58,6 +58,20 @@ type VMSpec struct {
 	// Labels allow you to include extra data on the Microvm
 	// +optional
 	Labels map[string]string `json:"labels"`
+
+	// KernelVersion is an optional short syntax to supply kernel image information.
+	// If provided, capmvm will fill in the appropriate fields with the default
+	// settings for that version.
+	// This value will override any other kernel image arguments.
+	// +optional
+	KernelVersion string `json:"kernelVersion"`
+
+	// OsVersion is an optional short syntax to supply root volume information.
+	// If provided, capmvm will fill in the appropriate fields with the default
+	// settings for that version.
+	// This value will override any other root volume arguments.
+	// +optional
+	OsVersion string `json:"osVersion"`
 }
 
 // ContainerFileSource represents a file coming from a container image.
