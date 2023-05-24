@@ -149,8 +149,12 @@ github.com/weaveworks-liquidmetal/controller-pkg/types/microvm v0.0.0-2023011316
 github.com/weaveworks-liquidmetal/controller-pkg/types/microvm v0.0.0-20230113163837-eaa53ce86ced/go.mod h1:KPlbfZsmo9xlfzl98cFBqGYc9hpgSYljICR+LrqKJUA=
 github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230109155544-97f4f12ca184 h1:o0CJeY1Dbq+xxw5mx32S+5nOft5nf2NZMjIbHlLvFpQ=
 github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230109155544-97f4f12ca184/go.mod h1:JPML9O56MoPKGX97jfj++BtuFFS84jm4T+jWQBjO5Uc=
+github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230522070730-18c06de56a20 h1:H3hlE0o89gEtWJJJd08yRORcCY0X7Ujyn32TRxtPOMw=
+github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230522070730-18c06de56a20/go.mod h1:WcqH8PmBC38GTduseUoUnI/j8fYFMt+jKxKui5t3wck=
 github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230109155544-97f4f12ca184 h1:7vrApNvF61104ULFq5lzH1IGfIE+94MwV/SmXlYvss0=
 github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230109155544-97f4f12ca184/go.mod h1:d65mpsT+pbMnMJZhUqeNtt7lcQnsX8cowl9dTRkniSI=
+github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230522070730-18c06de56a20 h1:Q/88mlcogfkf3Xn3ZR+U8vfPOx+NF13ThdpBnQKLCCo=
+github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230522070730-18c06de56a20/go.mod h1:aCYaulYrPV5V3GtUDYMb43MSjk5cj+ioIiPWGwqoIJE=
 github.com/yitsushi/macpot v1.0.2 h1:LSiBfVKRhzrvUTBDO2GZYAQvS+gG9wdzPaaiNeR29KM=
 github.com/yitsushi/macpot v1.0.2/go.mod h1:7KBzokvUNbcsR1VcmKwmYRWB2FyAWcIll4L93b2A8q4=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
@@ -230,6 +234,7 @@ golang.org/x/net v0.0.0-20201021035429-f5854403a974/go.mod h1:sp8m0HH+o8qH0wwXwY
 golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4/go.mod h1:p54w0d4576C0XHj96bSt6lcn1PtDYWL6XObtHCRCNQM=
 golang.org/x/net v0.0.0-20220906165146-f3363e06e74c h1:yKufUcDwucU5urd+50/Opbt4AYpqthk7wHpHok8f1lo=
 golang.org/x/net v0.0.0-20220906165146-f3363e06e74c/go.mod h1:YDH+HFinaLZZlnHAfSS6ZXJJ9M9t4Dl22yv3iI2vPwk=
+golang.org/x/net v0.8.0/go.mod h1:QVkue5JL9kW//ek3r6jTKnTFis1tRmNAW2P1shuFdJc=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
 golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
@@ -277,6 +282,7 @@ golang.org/x/sys v0.0.0-20210330210617-4fbd30eecc44/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20210510120138-977fb7262007/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 h1:WIoqL4EROvwiPdUtaip4VcDdpZ4kha7wBWZrbVKCIZg=
 golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
+golang.org/x/sys v0.6.0/go.mod h1:oPkhp1MJrh7nUepCBck5+mAzfO9JrbApNNgaTdGDITg=
 golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1/go.mod h1:bj7SfCRtBDWHUb9snDiAeCFNEtKQo2Wmx5Cou7ajbmo=
 golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
 golang.org/x/text v0.3.0/go.mod h1:NqM8EUOU14njkJ3fqMW+pc6Ldnwhi/IjpwHt7yyuwOQ=
@@ -286,6 +292,7 @@ golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/text v0.3.5/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/text v0.3.7 h1:olpwvP2KacW1ZWvsR7uQhoyTYvKAupfQrRGBFM352Gk=
 golang.org/x/text v0.3.7/go.mod h1:u+2+/6zg+i71rQMx5EYifcz6MCKuco9NR6JIITiCfzQ=
+golang.org/x/text v0.8.0/go.mod h1:e1OnstbJyHTd6l/uOt8jFFHp6TRDWZR/bV3emEE/zU8=
 golang.org/x/time v0.0.0-20181108054448-85acf8d2951c/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20190308202827-9d24e82272b4/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20191024005414-555d28b269f0/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
