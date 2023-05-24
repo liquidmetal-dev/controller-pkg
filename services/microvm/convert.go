@@ -14,6 +14,7 @@ func convertToFlintlockAPI(mvmScope Scope) *flintlocktypes.MicroVMSpec {
 	mvmSpec := mvmScope.GetMicrovmSpec()
 
 	apiVM := newVM(
+		withProvider(&mvmSpec.Provider),
 		withNamespaceName(mvmScope.Name(), mvmScope.Namespace()),
 		withLabels(mvmScope.GetLabels()),
 		withResources(mvmSpec.VCPU, mvmSpec.MemoryMb),
@@ -47,6 +48,12 @@ func withNamespaceName(name, namespace string) specOption {
 	return func(s *flintlocktypes.MicroVMSpec) {
 		s.Id = name
 		s.Namespace = namespace
+	}
+}
+
+func withProvider(p *string) specOption {
+	return func(s *flintlocktypes.MicroVMSpec) {
+		s.Provider = p
 	}
 }
 

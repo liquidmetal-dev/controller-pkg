@@ -17,6 +17,7 @@ func Test_convertToFlintlockAPI(t *testing.T) {
 	var (
 		machineName = "foo"
 		namespace   = "baz"
+		provider    = "pterodactyl"
 
 		keyVal1 = "key1"
 
@@ -40,6 +41,13 @@ func Test_convertToFlintlockAPI(t *testing.T) {
 			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
 				g.Expect(converted.Id).To(Equal(machineName))
 				g.Expect(converted.Namespace).To(Equal(namespace))
+			},
+		},
+		{
+			name:  "withProvider",
+			input: microvm.VMSpec{Provider: provider},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.Provider).To(Equal(&provider))
 			},
 		},
 		{
