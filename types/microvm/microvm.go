@@ -21,6 +21,8 @@ package microvm
 type VMSpec struct {
 	// Provider allows you to specify the name of the microvm provider to use.
 	// If this isn't supplied then the default provider will be used.
+	// NOTE that the default provider cannot be controlled here: it would have been
+	// chosen by the operator configuring Flintlock on the remote host.
 	// +optional
 	Provider string `json:"provider,omitempty"`
 
