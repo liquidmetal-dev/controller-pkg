@@ -22,7 +22,7 @@ func convertToFlintlockAPI(mvmScope Scope) *flintlocktypes.MicroVMSpec {
 		withNetworkInterfaces(mvmSpec.NetworkInterfaces),
 		withAdditionalVolumes(mvmSpec.AdditionalVolumes),
 		withKernel(mvmSpec.Kernel, mvmSpec.KernelCmdLine),
-		withRootVolume(mvmSpec.RootVolume, mvmSpec.OsVersion),
+		withRootVolume(mvmSpec.RootVolume),
 	)
 
 	return apiVM
@@ -142,7 +142,7 @@ func withKernel(k types.ContainerFileSource, cmdLine map[string]string) specOpti
 	}
 }
 
-func withRootVolume(rv types.Volume, os string) specOption {
+func withRootVolume(rv types.Volume) specOption {
 	return func(s *flintlocktypes.MicroVMSpec) {
 		s.RootVolume = &flintlocktypes.Volume{
 			Id:         rv.ID,
