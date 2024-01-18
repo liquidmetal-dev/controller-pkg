@@ -2,7 +2,7 @@
 package fakes
 
 import (
-	"github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
+	"github.com/liquidmetal-dev/controller-pkg/types/microvm"
 )
 
 type FakeScope struct {

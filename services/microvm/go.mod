@@ -1,13 +1,13 @@
-module github.com/weaveworks-liquidmetal/controller-pkg/services/microvm
+module github.com/liquidmetal-dev/controller-pkg/services/microvm
 
-go 1.19
+go 1.21
 
 require (
 	github.com/onsi/gomega v1.24.1
-	github.com/weaveworks-liquidmetal/controller-pkg/client v0.0.0-20230116125931-089fb91de682
-	github.com/weaveworks-liquidmetal/controller-pkg/types/microvm v0.0.0-20230531120904-dd84ec5eab9f
-	github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230522070730-18c06de56a20
-	github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230522070730-18c06de56a20
+	github.com/liquidmetal-dev/controller-pkg/client v0.0.0-20230116125931-089fb91de682
+	github.com/liquidmetal-dev/controller-pkg/types/microvm v0.0.0-20230531120904-dd84ec5eab9f
+	github.com/liquidmetal-dev/flintlock/api v0.0.0-20230522070730-18c06de56a20
+	github.com/liquidmetal-dev/flintlock/client v0.0.0-20230522070730-18c06de56a20
 	github.com/yitsushi/macpot v1.0.2
 	google.golang.org/protobuf v1.28.1
 	gopkg.in/yaml.v2 v2.4.0

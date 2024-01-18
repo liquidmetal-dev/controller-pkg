@@ -1,4 +1,4 @@
-// Copyright 2022 Weaveworks or its affiliates. All Rights Reserved.
+// Copyright 2024 Liquid Metal Authors. All Rights Reserved.
 // SPDX-License-Identifier: MPL-2.0
 
 package client
@@ -9,8 +9,8 @@ import (
 	"fmt"
 	"net/url"
 
-	flintlockv1 "github.com/weaveworks-liquidmetal/flintlock/api/services/microvm/v1alpha1"
-	flgrpc "github.com/weaveworks-liquidmetal/flintlock/client/grpc"
+	flintlockv1 "github.com/liquidmetal-dev/flintlock/api/services/microvm/v1alpha1"
+	flgrpc "github.com/liquidmetal-dev/flintlock/client/grpc"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"

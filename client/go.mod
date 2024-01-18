@@ -1,10 +1,10 @@
-module github.com/weaveworks-liquidmetal/controller-pkg/client
+module github.com/liquidmetal-dev/controller-pkg/client
 
-go 1.19
+go 1.21
 
 require (
-	github.com/weaveworks-liquidmetal/flintlock/api v0.0.0-20230522070730-18c06de56a20
-	github.com/weaveworks-liquidmetal/flintlock/client v0.0.0-20230522070730-18c06de56a20
+	github.com/liquidmetal-dev/flintlock/api v0.0.0-20230522070730-18c06de56a20
+	github.com/liquidmetal-dev/flintlock/client v0.0.0-20230522070730-18c06de56a20
 	google.golang.org/grpc v1.50.1
 	google.golang.org/protobuf v1.28.1
 )
