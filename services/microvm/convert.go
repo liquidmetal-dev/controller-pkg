@@ -1,11 +1,11 @@
-// Copyright 2023 Weaveworks or its affiliates. All Rights Reserved.
+// Copyright 2024 Liquid Metal Authors. All Rights Reserved.
 // SPDX-License-Identifier: MPL-2.0
 
 package microvm
 
 import (
-	types "github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
-	flintlocktypes "github.com/weaveworks-liquidmetal/flintlock/api/types"
+	types "github.com/liquidmetal-dev/controller-pkg/types/microvm"
+	flintlocktypes "github.com/liquidmetal-dev/flintlock/api/types"
 )
 
 const platformLiquidMetal = "liquid_metal"
