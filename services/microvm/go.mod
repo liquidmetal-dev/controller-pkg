@@ -2,15 +2,9 @@ module github.com/liquidmetal-dev/controller-pkg/services/microvm
 
 go 1.21
 
-replace (
-	github.com/liquidmetal-dev/controller-pkg/client => ../../client
-	github.com/liquidmetal-dev/controller-pkg/types/microvm => ../../types/microvm
-
-)
-
 require (
-	github.com/liquidmetal-dev/controller-pkg/client v0.0.0-20230116125931-089fb91de682
-	github.com/liquidmetal-dev/controller-pkg/types/microvm v0.0.0-20230531120904-dd84ec5eab9f
+	github.com/liquidmetal-dev/controller-pkg/client v0.0.0-20240125153014-ade385f224bc
+	github.com/liquidmetal-dev/controller-pkg/types/microvm v0.0.0-20240125153014-ade385f224bc
 	github.com/liquidmetal-dev/flintlock/api v0.0.0-20240125150805-766c633b81f9
 	github.com/liquidmetal-dev/flintlock/client v0.0.0-20240125150805-766c633b81f9
 	github.com/onsi/gomega v1.24.1
