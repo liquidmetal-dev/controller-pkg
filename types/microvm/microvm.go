@@ -83,7 +83,7 @@ type Volume struct {
 	// +kubebuilder:validation:Required
 	ID string `json:"id"`
 	// Image is the container image to use as the source for the volume.
-	// +kubebuilder:validation:Required
+	// +optional
 	Image string `json:"image"`
 	// ReadOnly specifies that the volume is to be mounted readonly.
 	// +kubebuilder:default:=false
@@ -93,6 +93,10 @@ type Volume struct {
 	// This will only be applied to additional volumes.
 	// +optional
 	MountPoint string `json:"mountPoint,omitempty"`
+	// VirtioFSPath specifies the path in the guest where virtiofs is mounted.
+	// +optional
+	VirtioFSPath string `json:"virtiofsPath,omitempty"`
+
 }
 
 // IfaceType is a type representing the network interface types.
