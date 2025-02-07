@@ -2,8 +2,6 @@ module github.com/liquidmetal-dev/controller-pkg/services/microvm
 
 go 1.23
 
-toolchain go1.23.1
-
 require (
 	github.com/liquidmetal-dev/controller-pkg/client v0.0.0-20250206153520-fa7b57540c18
 	github.com/liquidmetal-dev/controller-pkg/types/microvm v0.0.0-20250207115528-f599d8cc9a1d
