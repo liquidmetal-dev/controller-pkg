@@ -6,9 +6,9 @@ import (
 	. "github.com/onsi/gomega"
 	"k8s.io/utils/pointer"
 
-	"github.com/weaveworks-liquidmetal/controller-pkg/services/microvm/fakes"
-	"github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
-	flintlocktypes "github.com/weaveworks-liquidmetal/flintlock/api/types"
+	"github.com/liquidmetal-dev/controller-pkg/services/microvm/fakes"
+	"github.com/liquidmetal-dev/controller-pkg/types/microvm"
+	flintlocktypes "github.com/liquidmetal-dev/flintlock/api/types"
 )
 
 func Test_convertToFlintlockAPI(t *testing.T) {
@@ -139,6 +139,33 @@ func Test_convertToFlintlockAPI(t *testing.T) {
 
 				g.Expect(converted.AdditionalVolumes[0].Id).To(Equal(strVal1))
 				g.Expect(*converted.AdditionalVolumes[0].Source.ContainerSource).To(Equal(strVal2))
+				g.Expect(converted.AdditionalVolumes[0].IsReadOnly).To(BeFalse())
+				g.Expect(converted.AdditionalVolumes[1].Id).To(Equal(strVal3))
+				g.Expect(*converted.AdditionalVolumes[1].Source.ContainerSource).To(Equal(strVal4))
+				g.Expect(converted.AdditionalVolumes[1].IsReadOnly).To(BeTrue())
+			},
+		},
+		{
+			name: "withAdditionalVolumes has virtiofs mount",
+			input: microvm.VMSpec{
+				AdditionalVolumes: []microvm.Volume{
+					{
+						ID:       strVal1,
+						ReadOnly: false,
+						VirtioFSPath: strVal2,
+					},
+					{
+						ID:       strVal3,
+						Image:    strVal4,
+						ReadOnly: true,
+					},
+				},
+			},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.AdditionalVolumes).To(HaveLen(2))
+
+				g.Expect(converted.AdditionalVolumes[0].Id).To(Equal(strVal1))
+				g.Expect(*converted.AdditionalVolumes[0].Source.VirtiofsSource).To(Equal(strVal2))
 				g.Expect(converted.AdditionalVolumes[0].IsReadOnly).To(BeFalse())
 				g.Expect(converted.AdditionalVolumes[1].Id).To(Equal(strVal3))
 				g.Expect(*converted.AdditionalVolumes[1].Source.ContainerSource).To(Equal(strVal4))
