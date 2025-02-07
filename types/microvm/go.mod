@@ -1,3 +1,3 @@
-module github.com/weaveworks-liquidmetal/controller-pkg/types/microvm
+module github.com/liquidmetal-dev/controller-pkg/types/microvm
 
 go 1.19
