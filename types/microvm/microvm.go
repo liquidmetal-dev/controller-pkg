@@ -96,7 +96,6 @@ type Volume struct {
 	// VirtioFSPath specifies the path in the guest where virtiofs is mounted.
 	// +optional
 	VirtioFSPath string `json:"virtiofsPath,omitempty"`
-
 }
 
 // IfaceType is a type representing the network interface types.
