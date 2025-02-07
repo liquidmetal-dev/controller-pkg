@@ -4,8 +4,8 @@
 package microvm
 
 import (
-	types "github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
-	flintlocktypes "github.com/weaveworks-liquidmetal/flintlock/api/types"
+	types "github.com/liquidmetal-dev/controller-pkg/types/microvm"
+	flintlocktypes "github.com/liquidmetal-dev/flintlock/api/types"
 )
 
 const platformLiquidMetal = "liquid_metal"
@@ -113,15 +113,17 @@ func withAdditionalVolumes(volumes []types.Volume) specOption {
 	return func(s *flintlocktypes.MicroVMSpec) {
 		for i := range volumes {
 			volume := volumes[i]
-
 			addVol := &flintlocktypes.Volume{
 				Id:         volume.ID,
 				IsReadOnly: volume.ReadOnly,
-				Source: &flintlocktypes.VolumeSource{
-					ContainerSource: &volume.Image,
-				},
+				Source: &flintlocktypes.VolumeSource{},
 			}
-
+			if volume.Image != "" {
+				addVol.Source.ContainerSource = &volume.Image
+			}
+			if volume.VirtioFSPath != "" {
+				addVol.Source.VirtiofsSource = &volume.VirtioFSPath
+			}
 			if volume.MountPoint != "" {
 				addVol.MountPoint = &volume.MountPoint
 			}

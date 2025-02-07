@@ -6,9 +6,9 @@ import (
 	. "github.com/onsi/gomega"
 	"k8s.io/utils/pointer"
 
-	"github.com/weaveworks-liquidmetal/controller-pkg/services/microvm/fakes"
-	"github.com/weaveworks-liquidmetal/controller-pkg/types/microvm"
-	flintlocktypes "github.com/weaveworks-liquidmetal/flintlock/api/types"
+	"github.com/liquidmetal-dev/controller-pkg/services/microvm/fakes"
+	"github.com/liquidmetal-dev/controller-pkg/types/microvm"
+	flintlocktypes "github.com/liquidmetal-dev/flintlock/api/types"
 )
 
 func Test_convertToFlintlockAPI(t *testing.T) {
