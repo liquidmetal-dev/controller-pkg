@@ -23,6 +23,8 @@ func convertToFlintlockAPI(mvmScope Scope) *flintlocktypes.MicroVMSpec {
 		withAdditionalVolumes(mvmSpec.AdditionalVolumes),
 		withKernel(mvmSpec.Kernel, mvmSpec.KernelCmdLine),
 		withRootVolume(mvmSpec.RootVolume),
+		withGuestAgent(mvmSpec.AllowGuestAgent),
+		withCPUConfig(mvmSpec.CPUConfig),
 	)
 
 	return apiVM
@@ -116,7 +118,7 @@ func withAdditionalVolumes(volumes []types.Volume) specOption {
 			addVol := &flintlocktypes.Volume{
 				Id:         volume.ID,
 				IsReadOnly: volume.ReadOnly,
-				Source: &flintlocktypes.VolumeSource{},
+				Source:     &flintlocktypes.VolumeSource{},
 			}
 			if volume.Image != "" {
 				addVol.Source.ContainerSource = &volume.Image
@@ -152,6 +154,25 @@ func withRootVolume(rv types.Volume) specOption {
 			Source: &flintlocktypes.VolumeSource{
 				ContainerSource: &rv.Image,
 			},
+		}
+	}
+}
+
+func withGuestAgent(allow bool) specOption {
+	return func(s *flintlocktypes.MicroVMSpec) {
+		s.AllowGuestAgent = allow
+	}
+}
+
+func withCPUConfig(cfg *types.CPUConfig) specOption {
+	return func(s *flintlocktypes.MicroVMSpec) {
+		if cfg == nil {
+			return
+		}
+
+		s.CpuConfig = &flintlocktypes.CPUConfig{
+			FeaturesToEnable:         cfg.FeaturesToEnable,
+			KvmCapabilitiesToDisable: cfg.KVMCapabilitiesToDisable,
 		}
 	}
 }

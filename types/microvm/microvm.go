@@ -65,6 +65,29 @@ type VMSpec struct {
 	// Labels allow you to include extra data on the Microvm
 	// +optional
 	Labels map[string]string `json:"labels"`
+
+	// AllowGuestAgent, when true, attaches a vsock device to the microvm so the in-guest
+	// guest-agent can communicate with the host.
+	// +optional
+	AllowGuestAgent bool `json:"allowGuestAgent,omitempty"`
+
+	// CPUConfig allows customising the CPU features presented to the guest.
+	// Support and semantics vary by provider.
+	// +optional
+	CPUConfig *CPUConfig `json:"cpuConfig,omitempty"`
+}
+
+// CPUConfig represents CPU feature configuration for a microvm.
+type CPUConfig struct {
+	// FeaturesToEnable is a list of optional CPU features to enable. Accepted values are
+	// provider specific (e.g. named features such as "amx" for Cloud Hypervisor, or numeric
+	// KVM capability IDs for Firecracker). The "!" prefix is not allowed here.
+	// +optional
+	FeaturesToEnable []string `json:"featuresToEnable,omitempty"`
+	// KVMCapabilitiesToDisable is a list of KVM capability IDs to disable. Only supported by
+	// providers that declare the KVMCapabilitiesDisable capability (currently Firecracker only).
+	// +optional
+	KVMCapabilitiesToDisable []string `json:"kvmCapabilitiesToDisable,omitempty"`
 }
 
 // ContainerFileSource represents a file coming from a container image.
