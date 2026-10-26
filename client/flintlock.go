@@ -38,3 +38,7 @@ func (fc *flintlockClient) ListMicroVMs(ctx context.Context, in *flintlockv1.Lis
 func (fc *flintlockClient) ListMicroVMsStream(ctx context.Context, in *flintlockv1.ListMicroVMsRequest, opts ...grpc.CallOption) (flintlockv1.MicroVM_ListMicroVMsStreamClient, error) { //nolint:lll // it would make it less readable
 	return fc.c.ListMicroVMsStream(ctx, in, opts...)
 }
+
+func (fc *flintlockClient) ServerInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*flintlockv1.ServerInfoResponse, error) { //nolint:lll // it would make it less readable
+	return fc.c.ServerInfo(ctx, in, opts...)
+}

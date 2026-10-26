@@ -150,8 +150,8 @@ func Test_convertToFlintlockAPI(t *testing.T) {
 			input: microvm.VMSpec{
 				AdditionalVolumes: []microvm.Volume{
 					{
-						ID:       strVal1,
-						ReadOnly: false,
+						ID:           strVal1,
+						ReadOnly:     false,
 						VirtioFSPath: strVal2,
 					},
 					{
@@ -218,6 +218,39 @@ func Test_convertToFlintlockAPI(t *testing.T) {
 				g.Expect(converted.RootVolume.Id).To(Equal(strVal1))
 				g.Expect(*converted.RootVolume.Source.ContainerSource).To(Equal(strVal2))
 				g.Expect(converted.RootVolume.IsReadOnly).To(BeFalse())
+			},
+		},
+		{
+			name:  "withGuestAgent, default is false",
+			input: microvm.VMSpec{},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.AllowGuestAgent).To(BeFalse())
+			},
+		},
+		{
+			name:  "withGuestAgent",
+			input: microvm.VMSpec{AllowGuestAgent: true},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.AllowGuestAgent).To(BeTrue())
+			},
+		},
+		{
+			name:  "withCPUConfig, not set",
+			input: microvm.VMSpec{},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.CpuConfig).To(BeNil())
+			},
+		},
+		{
+			name: "withCPUConfig",
+			input: microvm.VMSpec{CPUConfig: &microvm.CPUConfig{
+				FeaturesToEnable:         []string{strVal1, strVal2},
+				KVMCapabilitiesToDisable: []string{strVal3},
+			}},
+			expected: func(g *WithT, converted *flintlocktypes.MicroVMSpec) {
+				g.Expect(converted.CpuConfig).ToNot(BeNil())
+				g.Expect(converted.CpuConfig.FeaturesToEnable).To(Equal([]string{strVal1, strVal2}))
+				g.Expect(converted.CpuConfig.KvmCapabilitiesToDisable).To(Equal([]string{strVal3}))
 			},
 		},
 	}

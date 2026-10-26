@@ -21,7 +21,7 @@ fmt-%: generate-% tidy-% vet-% mocks-%
 	cd $(subst :,/,$*); go fmt ./...
 
 tidy-%:
-	cd $(subst :,/,$*); go mod tidy -compat=1.19
+	cd $(subst :,/,$*); go mod tidy
 
 vet-%:
 # "git:libgit2" is the wildcard that comes after "vet-"
@@ -43,7 +43,7 @@ generate-%: controller-gen ## Generate schema
 CONTROLLER_GEN = $(GOBIN)/controller-gen
 .PHONY: controller-gen
 controller-gen: ## Download controller-gen locally if necessary.
-	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.10.0)
+	$(call go-install-tool,$(CONTROLLER_GEN),sigs.k8s.io/controller-tools/cmd/controller-gen@v0.23.0)
 
 # go-install-tool will 'go install' any package $2 and install it to $1.
 PROJECT_DIR := $(shell dirname $(abspath $(lastword $(MAKEFILE_LIST))))
