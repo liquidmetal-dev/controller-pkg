@@ -32,6 +32,29 @@ make all                               # the same for every module
 cd services/microvm && go test ./...   # tests (only this module has tests)
 ```
 
+## Downstream projects
+
+The modules in this repo are consumed by:
+
+- [`microvm-operator`](https://github.com/liquidmetal-dev/microvm-operator)
+- [`cluster-api-provider-microvm`](https://github.com/liquidmetal-dev/cluster-api-provider-microvm)
+
+A change here will likely need a corresponding change in each of those
+projects. When you make a change in this repo:
+
+1. Create an issue in each downstream repo that describes the change needed
+   there and links back to the PR here.
+2. Link those issues from the PR description in this repo.
+
+```sh
+gh issue create -R liquidmetal-dev/microvm-operator \
+  --title "Update for controller-pkg change: <summary>" \
+  --body "Follow-up to liquidmetal-dev/controller-pkg#<PR>. <what needs to change>"
+gh issue create -R liquidmetal-dev/cluster-api-provider-microvm \
+  --title "Update for controller-pkg change: <summary>" \
+  --body "Follow-up to liquidmetal-dev/controller-pkg#<PR>. <what needs to change>"
+```
+
 ## Commits
 
 - Use [Conventional Commits](https://www.conventionalcommits.org/):
@@ -52,3 +75,5 @@ cd services/microvm && go test ./...   # tests (only this module has tests)
   as the commit subject.
 - No agent attribution lines or badges in the PR description.
 - Describe what changed and why. Link the issue if one exists.
+- Link the issues created in the downstream repos (see
+  [Downstream projects](#downstream-projects)).
